@@ -7,32 +7,45 @@ import org.w3c.dom.ls.LSOutput;
  * @author oliverbittel
  * @since 22.2.2019
  */
-public abstract class AbstractFrequencyTable implements FrequencyTable {
+public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 	@Override
 	public boolean isEmpty() {
 		return this.size() == 0;
 	}
 	
 	@Override
-    public void add(String w) {
+    public void add(T w) {
         add(w, 1);
     }
 
+	// @Override
+	// @SuppressWarnings("unchecked")
+	// public void addAll(T fq) {
+	// 	// Ihr Code:
+	// 	for (int i = 0; i < size(); i++) {
+	// 		if (((FrequencyTable<T>) fq).get(i) != null) {
+	// 			this.add(((FrequencyTable<T>) fq).get(i).getWord(), ((FrequencyTable<T>) fq).get(i).getFrequency());
+	// 		}
+	// 	}
+	// }
+
 	@Override
-	public void addAll(FrequencyTable fq) {
+	@SuppressWarnings("unchecked")
+	public void addAll(T fq) {
 		// Ihr Code:
 		for (int i = 0; i < size(); i++) {
-			if (fq.get(i) != null) {
-				this.add(fq.get(i).getWord(), fq.get(i).getFrequency());
+			if (((FrequencyTable<T>) fq).get(i) != null) {
+				this.add(((FrequencyTable<T>) fq).get(i).getWord(), ((FrequencyTable<T>) fq).get(i).getFrequency());
 			}
 		}
 	}
 
 	@Override
-	public void collectMostFrequent(FrequencyTable fq) {
+	@SuppressWarnings("unchecked")
+	public void collectMostFrequent(T fq) {
 		// Ihr Code:
 		int t = 0;
-		fq.clear();
+		((FrequencyTable<T>) fq).clear();
 		if (this.isEmpty()) {
 			return;
 		}
@@ -46,9 +59,10 @@ public abstract class AbstractFrequencyTable implements FrequencyTable {
 	}
 
 	@Override
-	public void collectLeastFrequent(FrequencyTable fq) {
+	@SuppressWarnings("unchecked")
+	public void collectLeastFrequent(T fq) {
 		// Ihr Code:
-		fq.clear();
+		((FrequencyTable<T>) fq).clear();
 		if (this.isEmpty()) {
 			return;
 		}
