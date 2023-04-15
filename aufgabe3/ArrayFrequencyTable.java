@@ -7,9 +7,9 @@ import java.util.Arrays;
  * @author oliverbittel
  * @since 25.03.2021
  */
-public class ArrayFrequencyTable extends AbstractFrequencyTable {
+public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 	private int size;
-	private Word fqTable[];
+	private T fqTable[];
 	private final int DEFAULT_SIZE = 100;
 
 	public ArrayFrequencyTable() {
@@ -21,11 +21,6 @@ public class ArrayFrequencyTable extends AbstractFrequencyTable {
 		// throw muss noch auskommentiert werden!
 		// throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 		// Ihr Code:
-//		this.size = 0;
-//		for (int i = 0; i < this.fqTable.length; i++) {
-//			if (this.fqTable[i] != null) {
-//				size = this.size + 1;
-////				System.out.println(fqTable[i])
 		return this.size;
 	}
 

@@ -1,11 +1,10 @@
 package aufgabe3;
-
 /**
  *
  * @author oliverbittel
  * @since 12.2.2020
  */
-public interface FrequencyTable {
+public interface FrequencyTable<T> {
 	/**
 	 * Liefert die Anzahl der W&ouml;rter in dieser Tabelle zur&uuml;ck.
 	 * @return Anzahl der H&auml;ufigkeitseintr&auml;ge.
@@ -31,7 +30,7 @@ public interface FrequencyTable {
 	 * @param w Wort.
 	 * @param f H&auml;ufigkeit.
 	 */
-	void add(String w, int f);
+	void add(T w, int f);
 	
 	/**
 	 * F&uuml;gt das Wort w mit der H&auml;ufigkeit 1 zu dieser Tabelle dazu. 
@@ -39,7 +38,7 @@ public interface FrequencyTable {
 	 * wird die H&auml;ufigkeit um 1 erhöht. 
 	 * @param w Wort.
 	 */
-	void add(String w);
+	void add(T w);
 	
 	/**
 	 * F&uuml;gt alle W&ouml;rter mit ihren H&auml;ufigkeiten aus fq zu dieser Tabelle dazu.
@@ -47,7 +46,7 @@ public interface FrequencyTable {
 	 * fq bleibt unver&auml;ndert.
 	 * @param fq H&auml;ufigkeitstabelle.
 	 */
-	void addAll(FrequencyTable fq);
+	void addAll(T fq);
 
 	/**
 	 * Liefert das Wort mit seiner Häufigkeit zur&uuml;ck, das mit seiner H&auml;ufigkeit an Position pos steht.
@@ -57,7 +56,7 @@ public interface FrequencyTable {
 	 * @return Wort mit H&auml;ufigkeit oder null, 
 	 * falls die Tabelle weniger als pos-1 Elemente  enth&auml;lt.  
 	 */
-	Word get(int pos);
+	Element<T> get(int pos);
 
 	/**
 	 * Liefert die H&auml;ufigkeit des Worts w zur&uuml;ck.
@@ -65,7 +64,7 @@ public interface FrequencyTable {
 	 * @param w Wort
 	 * @return H&auml;ufigkeit. 
 	 */
-	int get(String w);
+	int get(T w);
 	
 	/**
 	 * Sammelt alle W&ouml;rter mit der gr&ouml;ssten H&auml;ufigkeit und speichert sie in fq.
@@ -75,12 +74,12 @@ public interface FrequencyTable {
 	 * tab2 = {"ein":3, "das":3}. 
 	 * @param fq H&auml;ufigkeitstabelle.
 	 */
-	void collectMostFrequent(FrequencyTable fq);
+	void collectMostFrequent(T fq);
 	
 	/**
 	 * Sammelt alle W&ouml;rter mit der H&auml;ufigkeit 1 und speichert sie in fq.
 	 * @param fq H&auml;ufigkeitstabelle.
 	 */
-	void collectLeastFrequent(FrequencyTable fq);
+	void collectLeastFrequent(T fq);
 
 }
