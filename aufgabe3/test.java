@@ -2,7 +2,7 @@ package aufgabe3;
 
 public class test {
 public static void main(String[]args){
-    LinkedListFrequencyTable_old f1 = new LinkedListFrequencyTable_old();
+    LinkedListFrequencyTable f1 = new LinkedListFrequencyTable();
 
     f1.add("das");
     f1.add("ist");
@@ -10,7 +10,7 @@ public static void main(String[]args){
     f1.add("Test");
     f1.add("Test",2);
 
-    FrequencyTable f2 = new LinkedListFrequencyTable_old();
+    FrequencyTable f2 = new LinkedListFrequencyTable();
     f2.add("das",2);
     f2.add("ist",4);
     f2.add("kurzer");
