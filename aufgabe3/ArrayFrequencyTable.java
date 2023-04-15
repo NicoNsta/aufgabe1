@@ -9,8 +9,8 @@ import java.util.Arrays;
  */
 public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 	private int size;
-	private T fqTable[];
-	private final int DEFAULT_SIZE = 100;
+	private T[] fqTable;
+	private static final int DEFAULT_SIZE = 100;
 
 	public ArrayFrequencyTable() {
         clear();
@@ -25,18 +25,20 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public final void clear() {
 		// throw muss noch auskommentiert werden!
 		// throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 		// Ihr Code:
 		size = 0;
-		fqTable = new Word[DEFAULT_SIZE];
+		fqTable = (T[]) new Element[DEFAULT_SIZE];
 	}
 
+	@SuppressWarnings("unchecked")
 	private void moveToLeft(int pos) {
-		Word w = this.fqTable[pos];
+		T w = this.fqTable[pos];
 		int i = pos - 1;
-		while (i >= 0 && w.getFrequency() > this.fqTable[i].getFrequency()) {
+		while (i >= 0 && ((Element<Integer>) w).getFrequency() > ((Element<Integer>) this.fqTable[i]).getFrequency()) {
 			this.fqTable[i + 1] = this.fqTable[i];
 			i--;
 		}
@@ -44,46 +46,33 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 	}
 
 	@Override
-	public void add(String w, int f) {
+	@SuppressWarnings("unchecked")
+	public void add(T w, int f) {
 		// throw muss noch auskommentiert werden!
 		// throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 		// Ihr Code:
-//		System.out.println("Called");
-//
+
 		if (this.size == this.fqTable.length) {
 			this.fqTable = Arrays.copyOf(this.fqTable, size() * 2);
 			}
 
 
 		if (this.isEmpty()){
-			this.fqTable[0] = new Word(w, f);
+			this.fqTable[0] = (T) new Element<T>(w, f);
 			size++;
 			return;
 		}
-//		for (int i = 0; i < this.size(); i++) {
-//			if (this.fqTable[i] != null) {
-//				if (this.fqTable[i].getWord().equals(w)) {
-//					this.fqTable[i].addFrequency(f);
-//					moveToLeft(i);
-//					return;
-//				}
-//			} else {
-//				this.fqTable[size()] = new Word(w, f);
-//				moveToLeft(size());
-//				size++;
-//				return;
-//			}
-//		}
+
 		for (int i = 0; i < this.size(); i++) {
 
-			if (this.fqTable[i].getWord().equals(w)) {
-				this.fqTable[i].addFrequency(f);
+			if (((Element<T>) this.fqTable[i]).getElement().equals(w)) {
+				((Element<Integer>) this.fqTable[i]).addFrequency(f);
 				moveToLeft(i);
 				return;
 			}
 		}
 
-		this.fqTable[size()] = new Word(w, f);
+		this.fqTable[size()] = (T) new Element<T>(w, f);
 		moveToLeft(size());
 		size++;
 		return;
@@ -92,25 +81,24 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
 
 	@Override
-	public Word get(int pos) {
-		// throw muss noch auskommentiert werden!
-//		 throw new UnsupportedOperationException("Not supported yet.");
-//		 To change body of generated methods, choose Tools | Templates.
-		// Ihr Code:
+	@SuppressWarnings("unchecked")
+	public Element<T> get(int pos) {
+
 		if (pos < 0 || pos >= size()) {
 			return null;
 		}
-		return this.fqTable[pos];
+		return (Element<T>) this.fqTable[pos];
 	}
 
 	@Override
-	public int get(String w) {
+	@SuppressWarnings("unchecked")
+	public int get(T w) {
 		// throw muss noch auskommentiert werden!
 		// throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 		// Ihr Code:
 		for (int i = 0; i < this.fqTable.length; i++) {
-			if (this.fqTable[i] != null && this.fqTable[i].getWord().equals(w)) {
-				return fqTable[i].getFrequency();
+			if (this.fqTable[i] != null && ((Element<T>) this.fqTable[i]).getElement().equals(w)) {
+				return ((Element<Integer>) fqTable[i]).getFrequency();
 			}
 		}
 		return 0;
