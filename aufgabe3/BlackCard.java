@@ -2,9 +2,6 @@ package aufgabe3;
 
 public class BlackCard extends Card{
 
-    private Suit farbe;
-    private Rank wert;
-
     public BlackCard() {
         super();
     }
