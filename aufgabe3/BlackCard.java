@@ -2,21 +2,15 @@ package aufgabe3;
 
 public class BlackCard extends Card{
 
-    enum Suit {
-        CLUBS,
-        DIAMONDS
-    }
-
     private Suit farbe;
     private Rank wert;
 
-    private BlackCard(Rank wert, Suit farbe) {
-        this.farbe = farbe;
-        this.wert = wert;
+    public BlackCard() {
+        super();
     }
 
-    public static BlackCard createBlackCard(Rank wert, Suit farbe) {
-            return new BlackCard(wert, farbe);
+    public BlackCard(Card.Suit farbe, Card.Rank wert) {
+        super(wert, farbe);
     }
 
     public Suit getFarben() {

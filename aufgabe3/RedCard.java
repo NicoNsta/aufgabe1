@@ -2,21 +2,15 @@ package aufgabe3;
 
 public class RedCard extends Card{
 
-    enum Suit {
-        SPADES,
-        HEARTS
-    }
-
     private Suit farbe;
     private Rank wert;
 
-    private RedCard(Rank wert, Suit farbe) {
-        this.farbe = farbe;
-        this.wert = wert;
+    public RedCard() {
+        super();
     }
 
-    public static RedCard createRedCard(Rank wert, Suit farbe) {
-            return new RedCard(wert, farbe);
+    public RedCard(Card.Suit farbe, Card.Rank wert) {
+        super(wert, farbe);
     }
 
     public Suit getFarben() {

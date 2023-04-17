@@ -2,18 +2,18 @@ package aufgabe3;
 
 public abstract class Card {
 
-    // public abstract Farben getFarben();
+    Suit farbe;
+    Rank wert;
 
-    // public abstract Werte getWerte();
+    protected Card() {
+        this.wert = null;
+        this.farbe = null;
+    }
 
-    // public abstract String toString();
-
-    // enum Farben {
-    //     PIQUE,
-    //     HERZ,
-    //     KARO,
-    //     KREUZ
-    // }
+    protected Card(Card.Rank wert, Card.Suit farbe) {
+        this.wert = wert;
+        this.farbe = farbe;
+    }
 
     enum Rank {
         SEVEN,
@@ -26,6 +26,9 @@ public abstract class Card {
     }
 
     enum Suit {
-
+        CLUBS,
+        DIAMONDS,
+        SPADES,
+        HEARTS
     }
 }
