@@ -31,4 +31,11 @@ public class RedCard extends Card{
         return this.wert;
     }
 
+    @Override
+    public String toString() {
+        return "RedCard { " +
+                "wert=" + wert +
+                ", farbe='" + farbe +
+                " }";
+    }
 }

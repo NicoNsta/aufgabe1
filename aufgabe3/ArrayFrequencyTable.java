@@ -75,7 +75,7 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 		this.fqTable[size()] = (T) new Element<T>(w, f);
 		moveToLeft(size());
 		size++;
-		return;
+
 		}
 
 

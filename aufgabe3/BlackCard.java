@@ -30,4 +30,12 @@ public class BlackCard extends Card{
     public int getWert() {
         return this.wert;
     }
+
+    @Override
+    public String toString() {
+        return "BlackCard { " +
+                "wert=" + wert +
+                ", farbe='" + farbe +
+                " }";
+    }
 }
