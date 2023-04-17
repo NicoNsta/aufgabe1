@@ -3,7 +3,9 @@ package aufgabe3;
 public class BlackCard extends Card{
 
     public BlackCard() {
-        super();
+        while (this.farbe == Suit.DIAMONDS || this.farbe == Suit.HEARTS) {
+            this.farbe = Suit.values()[(int) (Math.random() * Suit.values().length)];
+        }
     }
 
     public BlackCard(Card.Suit farbe, Card.Rank wert) {
@@ -23,6 +25,6 @@ public class BlackCard extends Card{
         return "BlackCard { " +
                 "wert=" + wert +
                 ", farbe='" + farbe +
-                " }";
+                " } \n";
     }
 }

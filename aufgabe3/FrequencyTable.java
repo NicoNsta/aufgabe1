@@ -47,7 +47,7 @@ public interface FrequencyTable<T> {
 	 * @param fq H&auml;ufigkeitstabelle.
 	 * void addAll(T fq);
 	 */
-	void addAll(FrequencyTable<T> fq);
+	void addAll(FrequencyTable fq);
 
 	/**
 	 * Liefert das Wort mit seiner Häufigkeit zur&uuml;ck, das mit seiner H&auml;ufigkeit an Position pos steht.
@@ -75,12 +75,12 @@ public interface FrequencyTable<T> {
 	 * tab2 = {"ein":3, "das":3}. 
 	 * @param fq H&auml;ufigkeitstabelle.
 	 */
-	void collectMostFrequent(FrequencyTable<T> fq);
+	void collectMostFrequent(FrequencyTable fq);
 	
 	/**
 	 * Sammelt alle W&ouml;rter mit der H&auml;ufigkeit 1 und speichert sie in fq.
 	 * @param fq H&auml;ufigkeitstabelle.
 	 */
-	void collectLeastFrequent(FrequencyTable<T> fq);
+	void collectLeastFrequent(FrequencyTable fq);
 
 }

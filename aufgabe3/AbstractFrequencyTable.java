@@ -19,7 +19,7 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public void addAll(FrequencyTable<T> fq) {
+	public void addAll(FrequencyTable fq) {
 		// Ihr Code:
 		for (int i = 0; i < size(); i++) {
 			if (((FrequencyTable<T>) fq).get(i) != null) {
@@ -30,7 +30,7 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public void collectMostFrequent(FrequencyTable<T> fq) {
+	public void collectMostFrequent(FrequencyTable fq) {
 		// Ihr Code:
 		int t = 0;
 		fq.clear();
@@ -48,7 +48,7 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public void collectLeastFrequent(FrequencyTable<T> fq) {
+	public void collectLeastFrequent(FrequencyTable fq) {
 		// Ihr Code:
 		fq.clear();
 		if (this.isEmpty()) {

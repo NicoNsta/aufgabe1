@@ -6,8 +6,8 @@ public abstract class Card {
     Rank wert;
 
     protected Card() {
-        this.wert = null;
-        this.farbe = null;
+        this.farbe = Suit.values()[(int) (Math.random() * Suit.values().length)];
+        this.wert = Rank.values()[(int) (Math.random() * Rank.values().length)];
     }
 
     protected Card(Card.Rank wert, Card.Suit farbe) {

@@ -3,7 +3,9 @@ package aufgabe3;
 public class RedCard extends Card{
 
     public RedCard() {
-        super();
+        while (this.farbe == Suit.CLUBS || this.farbe == Suit.SPADES) {
+            this.farbe = Suit.values()[(int) (Math.random() * Suit.values().length)];
+        }
     }
 
     public RedCard(Card.Suit farbe, Card.Rank wert) {
@@ -23,6 +25,6 @@ public class RedCard extends Card{
         return "RedCard { " +
                 "wert=" + wert +
                 ", farbe='" + farbe +
-                " }";
+                " }\n";
     }
 }
