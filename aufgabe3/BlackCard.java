@@ -24,7 +24,7 @@ public class BlackCard extends Card{
     public String toString() {
         return "BlackCard { " +
                 "wert=" + wert +
-                ", farbe='" + farbe +
-                " } \n";
+                ", farbe=" + farbe +
+                " }\n";
     }
 }

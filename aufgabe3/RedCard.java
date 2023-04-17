@@ -24,7 +24,7 @@ public class RedCard extends Card{
     public String toString() {
         return "RedCard { " +
                 "wert=" + wert +
-                ", farbe='" + farbe +
+                ", farbe=" + farbe +
                 " }\n";
     }
 }

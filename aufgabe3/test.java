@@ -1,8 +1,10 @@
 package aufgabe3;
 
+import javax.sound.sampled.SourceDataLine;
+
 public class test {
 public static void main(String[]args){
-    // LinkedListFrequencyTable f1 = new LinkedListFrequencyTable();
+    LinkedListFrequencyTable f1 = new LinkedListFrequencyTable();
 
     // f1.add("das");
     // f1.add("ist");
@@ -22,6 +24,6 @@ public static void main(String[]args){
 
     // System.out.println("size: " + f1.size());
     // System.out.println(f1.get("Test"));
-    System.out.println("what is this?" + " i dunnno" + "\'" + "<---");
+    // System.out.println("what is this?" + " i dunnno" + "\'" + "<---");
     }
 }

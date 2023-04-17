@@ -22,8 +22,8 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 	public void addAll(FrequencyTable fq) {
 		// Ihr Code:
 		for (int i = 0; i < size(); i++) {
-			if (((FrequencyTable<T>) fq).get(i) != null) {
-				this.add(((FrequencyTable<T>) fq).get(i).getElement(), ((FrequencyTable<T>) fq).get(i).getFrequency());
+			if (fq.get(i) != null) {
+				this.add((T) fq.get(i).getElement(), ((FrequencyTable<T>) fq).get(i).getFrequency());
 			}
 		}
 	}
@@ -41,7 +41,7 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 
 		for (int j = 0; j < this.size(); j++) {
 			if (this.get(j) != null && this.get(j).getFrequency() == t) {
-				((FrequencyTable<T>) fq).add(get(j).getElement(), t);
+				fq.add(get(j).getElement(), t);
 			}
 		}
 	}
@@ -71,13 +71,13 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 	public String toString() {
 		StringBuilder s = new StringBuilder("");
 
-		s.append("{");
+		// s.append("{");
 		for (int i = 0; i < this.size(); i++) {
 			if (this.get(i) != null) {
 				s.append(this.get(i) +", ");
 			}
 		}
-		s.append("}").append(" size = " + this.size());
+		s.append(" size = " + this.size());
 
 		return s.toString();
 	}
