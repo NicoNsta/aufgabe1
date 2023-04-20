@@ -2,27 +2,29 @@ package aufgabe3;
 
 public class RedCard extends Card{
 
+    final String red = "RedCard";
+
     public RedCard() {
         while (this.farbe == Suit.CLUBS || this.farbe == Suit.SPADES) {
             this.farbe = Suit.values()[(int) (Math.random() * Suit.values().length)];
         }
-        color = "RedCard";
+        color = red;
     }
 
     public RedCard(Card.Suit farbe, Card.Rank wert) {
         super(wert, farbe);
-        color = "RedCard";
+        color = red;
     }
 
-    public Suit getFarben() {
-        return this.farbe;
-    }
+    // public Suit getFarben() {
+    //     return this.farbe;
+    // }
 
-    public Rank getWerte() {
-        return this.wert;
-    }
+    // public Rank getWerte() {
+    //     return this.wert;
+    // }
 
-    public String getColor(){
-        return "RedCard";
-    }
+    // public String getColor(){
+    //     return "dawadwawdawdwad";
+    // }
 }
