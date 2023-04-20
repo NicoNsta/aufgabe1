@@ -1,5 +1,7 @@
 package aufgabe3;
 
+import java.util.Iterator;
+
 public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
     private Node begin;
@@ -124,5 +126,11 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
         public void setNext(Node next) {
             this.next = next;
         }
+    }
+
+    @Override
+    public Iterator<Element<T>> iterator() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'iterator'");
     }
 }

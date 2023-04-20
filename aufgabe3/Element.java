@@ -49,6 +49,6 @@ public class Element<T> {
 	 */
 	@Override
 	public String toString() {
-		return data + ":" + freqency;
+		return data + ":" + freqency + "\n";
 	}
 }

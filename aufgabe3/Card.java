@@ -4,6 +4,7 @@ public abstract class Card {
 
     Suit farbe;
     Rank wert;
+    String color;
 
     protected Card() {
         this.farbe = Suit.values()[(int) (Math.random() * Suit.values().length)];
@@ -30,5 +31,24 @@ public abstract class Card {
         DIAMONDS,
         SPADES,
         HEARTS
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Card card = (Card) o;
+
+        if (farbe != card.farbe) return false;
+        return wert == card.wert;
+    }
+
+    @Override
+    public String toString() {
+        return color + " {" +
+                "wert='" + wert +
+                "', farbe='" + farbe +
+                "'}";
     }
 }

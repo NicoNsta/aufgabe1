@@ -6,10 +6,12 @@ public class BlackCard extends Card{
         while (this.farbe == Suit.DIAMONDS || this.farbe == Suit.HEARTS) {
             this.farbe = Suit.values()[(int) (Math.random() * Suit.values().length)];
         }
+        color = "BlackCard";
     }
 
     public BlackCard(Card.Suit farbe, Card.Rank wert) {
         super(wert, farbe);
+        color = "BlackCard";
     }
 
     public Suit getFarben() {
@@ -20,11 +22,7 @@ public class BlackCard extends Card{
         return this.wert;
     }
 
-    @Override
-    public String toString() {
-        return "BlackCard { " +
-                "wert=" + wert +
-                ", farbe=" + farbe +
-                " }\n";
+    public String getColor(){
+        return "BlackCard";
     }
 }

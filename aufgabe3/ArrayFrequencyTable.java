@@ -1,6 +1,7 @@
 package aufgabe3;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  *
@@ -36,18 +37,18 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
 	@SuppressWarnings("unchecked")
 	private void moveToLeft(int pos) {
-		T w = this.fqTable[pos];
+		T data = this.fqTable[pos];
 		int i = pos - 1;
-		while (i >= 0 && ((Element<Integer>) w).getFrequency() > ((Element<Integer>) this.fqTable[i]).getFrequency()) {
+		while (i >= 0 && ((Element<Integer>) data).getFrequency() > ((Element<Integer>) this.fqTable[i]).getFrequency()) {
 			this.fqTable[i + 1] = this.fqTable[i];
 			i--;
 		}
-		fqTable[i + 1] = w;
+		fqTable[i + 1] = data;
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public void add(T w, int f) {
+	public void add(T data, int f) {
 		// throw muss noch auskommentiert werden!
 		// throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 		// Ihr Code:
@@ -58,21 +59,21 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
 
 		if (this.isEmpty()){
-			this.fqTable[0] = (T) new Element<T>(w, f);
+			this.fqTable[0] = (T) new Element<T>(data, f);
 			size++;
 			return;
 		}
 
 		for (int i = 0; i < this.size(); i++) {
 
-			if (((Element<T>) this.fqTable[i]).getElement().equals(w)) {
+			if (((Element<T>) this.fqTable[i]).getElement().equals(data)) {
 				((Element<Integer>) this.fqTable[i]).addFrequency(f);
 				moveToLeft(i);
 				return;
 			}
 		}
 
-		this.fqTable[size()] = (T) new Element<T>(w, f);
+		this.fqTable[size()] = (T) new Element<T>(data, f);
 		moveToLeft(size());
 		size++;
 
@@ -92,15 +93,21 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public int get(T w) {
+	public int get(T data) {
 		// throw muss noch auskommentiert werden!
 		// throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 		// Ihr Code:
 		for (int i = 0; i < this.fqTable.length; i++) {
-			if (this.fqTable[i] != null && ((Element<T>) this.fqTable[i]).getElement().equals(w)) {
+			if (this.fqTable[i] != null && ((Element<T>) this.fqTable[i]).getElement().equals(data)) {
 				return ((Element<Integer>) fqTable[i]).getFrequency();
 			}
 		}
 		return 0;
+	}
+
+	@Override
+	public Iterator<Element<T>> iterator() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'iterator'");
 	}
 }
