@@ -11,7 +11,7 @@ public class Element<T> {
 	
 	/**
 	 * Konstruktor.
-	 * @param word Wort
+	 * @param data data
 	 * @param f H&auml;ufgkeit
 	 */
 	public Element(T data, int f) {
@@ -49,6 +49,6 @@ public class Element<T> {
 	 */
 	@Override
 	public String toString() {
-		return data + ":" + freqency + "\n";
+		return data + ":" + freqency;
 	}
 }

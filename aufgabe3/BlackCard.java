@@ -14,17 +14,5 @@ public class BlackCard extends Card{
     public BlackCard(Card.Suit farbe, Card.Rank wert) {
         super(wert, farbe);
         color = black;
-    }
-
-    // public Suit getFarben() {
-    //     return this.farbe;
-    // }
-
-    // public Rank getWerte() {
-    //     return this.wert;
-    // }
-
-    // public String getColor(){
-    //     return "BlackCard";
-    // }
+}
 }

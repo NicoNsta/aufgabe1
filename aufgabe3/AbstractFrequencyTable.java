@@ -11,52 +11,45 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 	public boolean isEmpty() {
 		return this.size() == 0;
 	}
-	
+
 	@Override
     public void add(T w) {
         add(w, 1);
     }
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public void addAll(FrequencyTable <? extends T> fq) {
-		// Ihr Code:
-		for (int i = 0; i < size(); i++) {
-			if (fq.get(i) != null) {
-				this.add((T) fq.get(i).getElement(), ((FrequencyTable<T>) fq).get(i).getFrequency());
-			}
+		for (var x : this) {
+			this.add(x.getElement(), x.getFrequency());
 		}
 	}
 
 	@Override
 	public void collectMostFrequent(FrequencyTable <? super T> fq) {
-		// Ihr Code:
-		int t = 0;
 		fq.clear();
 		if (this.isEmpty()) {
 			return;
 		}
-		t = this.get(0).getFrequency();
+		int t = this.get(0).getFrequency();
 
-		for (int j = 0; j < this.size(); j++) {
-			if (this.get(j) != null && this.get(j).getFrequency() == t) {
-				fq.add(get(j).getElement(), t);
+		for (var x : this) {
+			if (x.getFrequency() == t) {
+				fq.add(x.getElement(), t);
 			}
 		}
 	}
 
 	@Override
 	public void collectLeastFrequent(FrequencyTable <? super T> fq) {
-		// Ihr Code:
 		fq.clear();
 		if (this.isEmpty()) {
 			return;
 		}
-		for (int i = this.size() - 1; i >= 0; i--) {
-			if (this.get(i) != null && this.get(i).getFrequency() == 1) {
-				fq.add(get(i).getElement());
-			} else {
-				break;
+		int d = this.get(this.size() - 1).getFrequency();
+
+		for (var x : this) {
+			if (x.getFrequency() == d) {
+				fq.add(x.getElement(), d);
 			}
 		}
 	}
@@ -67,14 +60,12 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 	 */
 	@Override
 	public String toString() {
-		StringBuilder s = new StringBuilder("");
+		StringBuilder s = new StringBuilder();
 
-		for (int i = 0; i < this.size(); i++) {
-			if (this.get(i) != null) {
-				s.append(this.get(i));
-			}
+		for (var x : this) {
+			s.append(x);
 		}
-		s.append(" size = " + this.size());
+		s.append(" size = ").append(this.size());
 
 		return s.toString();
 	}
