@@ -11,8 +11,9 @@ public class BlackCard extends Card{
         color = black;
     }
 
-    public BlackCard(Card.Suit farbe, Card.Rank wert) {
-        super(wert, farbe);
-        color = black;
-}
+// public BlackCard(Card.Suit farbe, Card.Rank wert) {
+//     super(wert, farbe);
+//     color = black;
+// }
+
 }

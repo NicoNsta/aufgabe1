@@ -41,15 +41,16 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 
 	@Override
 	public void collectLeastFrequent(FrequencyTable <? super T> fq) {
+		// Ihr Code:
 		fq.clear();
 		if (this.isEmpty()) {
 			return;
 		}
-		int d = this.get(this.size() - 1).getFrequency();
-
 		for (var x : this) {
-			if (x.getFrequency() == d) {
-				fq.add(x.getElement(), d);
+			if (x != null && x.getFrequency() == 1) {
+				fq.add(x.getElement());
+			} else {
+				break;
 			}
 		}
 	}
