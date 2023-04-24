@@ -59,7 +59,7 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
 
 		if (this.isEmpty()){
-			this.fqTable[0] = (T) new Element<T>(data, f);
+			this.fqTable[0] = (T) new Element<>(data, f);
 			size++;
 			return;
 		}
@@ -73,7 +73,7 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 			}
 		}
 
-		this.fqTable[size()] = (T) new Element<T>(data, f);
+		this.fqTable[size()] = (T) new Element<>(data, f);
 		moveToLeft(size());
 		size++;
 
@@ -97,17 +97,44 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 		// throw muss noch auskommentiert werden!
 		// throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 		// Ihr Code:
-		for (int i = 0; i < this.fqTable.length; i++) {
-			if (this.fqTable[i] != null && ((Element<T>) this.fqTable[i]).getElement().equals(data)) {
-				return ((Element<Integer>) fqTable[i]).getFrequency();
+		for (T t : this.fqTable) {
+			if (t != null && ((Element<T>) t).getElement().equals(data)) {
+				return ((Element<Integer>) t).getFrequency();
 			}
 		}
 		return 0;
 	}
 
 	@Override
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+
+		for (int i = 0; i < this.size(); i++) {
+			if (this.get(i) != null) {
+				s.append(this.get(i));
+			}
+		}
+		s.append("\nsize = ").append(this.size());
+
+
+		return s.toString();
+	}
+
 	public Iterator<Element<T>> iterator() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'iterator'");
+		return new ArrayFrequencyTableIterator();
+	}
+
+	private class ArrayFrequencyTableIterator implements Iterator<Element<T>> {
+		private int pos = 0;
+
+		@Override
+		public boolean hasNext() {
+			return pos < size();
+		}
+
+		@Override
+		public Element<T> next() {
+			return get(pos++);
+		}
 	}
 }

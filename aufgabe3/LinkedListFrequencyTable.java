@@ -5,7 +5,6 @@ import java.util.Iterator;
 public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
     private Node begin;
-    private Node end;
     private int size;
     public LinkedListFrequencyTable() {
         clear();
@@ -18,27 +17,27 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
             for (int i = 1; i < fc; i++) {
                 current = current.next;
             }
-            Element<T> wF = current.wword;
+            Element<T> wF = current.data;
 
             for (int j = 0; j < fc; j++) {
-                current.wword = current.prev.wword;
+                current.data = current.prev.data;
                 current = current.prev;
             }
             current = this.begin.next;
-            current.wword = wF;
+            current.data = wF;
         }
 
 
         Node sort = begin.next;
-        Element<T> w = sort.wword;
+        Element<T> w = sort.data;
 
         int i = 0;
-        while (i < size && sort.next.wword != null && w.getFrequency() < sort.next.wword.getFrequency()) {
-            sort.wword = sort.next.wword;
+        while (i < size && sort.next.data != null && w.getFrequency() < sort.next.data.getFrequency()) {
+            sort.data = sort.next.data;
             sort = sort.next;
             i++;
         }
-        sort.wword = w;
+        sort.data = w;
     }
 
     @Override
@@ -54,7 +53,7 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
     @Override
     public void clear() {
         this.begin = new Node (null,null, null);
-        this.end = new Node(null, begin, null);
+        Node end = new Node(null, begin, null);
         this.begin.setNext(end);
         this.size = 0;
     }
@@ -64,7 +63,7 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
     public void add(T w, int f) {
 
         if (this.isEmpty()) {
-            Node firstNode = new Node ((T) new Element<T>(w, f), this.begin.next, this.begin);
+            Node firstNode = new Node ((T) new Element<>(w, f), this.begin.next, this.begin);
             firstNode.next.prev = firstNode;
             this.begin.next = firstNode;
             this.size++;
@@ -73,8 +72,8 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
         Node current = this.begin.next;
         for (int i = 1; i <= size; i++) {
-            if (current.wword != null && current.wword.getElement().equals(w)) {
-                current.wword.addFrequency(f);
+            if (current.data != null && current.data.getElement().equals(w)) {
+                current.data.addFrequency(f);
                 moveToLeft(i);
                 return;
             } else {
@@ -82,7 +81,7 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
             }
         }
 
-        Node nextNode = new Node ((T) new Element<T>(w, f), this.begin.next, this.begin);
+        Node nextNode = new Node ((T) new Element<>(w, f), this.begin.next, this.begin);
         nextNode.next.prev = nextNode;
         this.begin.next = nextNode;
         this.size++;
@@ -95,15 +94,15 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
         for (int i = 0; i < pos; i++) {
             current = current.next;
         }
-        return current.wword;
+        return current.data;
     }
 
     @Override
     public int get(T w) {
         Node current = this.begin.next;
         for (int i = 0; i < size; i++) {
-            if (w.equals(current.wword.getElement())) {
-                return current.wword.getFrequency();
+            if (w.equals(current.data.getElement())) {
+                return current.data.getFrequency();
             } else {
                 current = current.next;
             }
@@ -115,10 +114,10 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
     private class Node {
         Node next;
         Node prev;
-        Element<T> wword;
+        Element<T> data;
 
         public Node(T data, Node n, Node p) {
-            this.wword = (Element<T>) data;
+            this.data = (Element<T>) data;
             this.next = n;
             this.prev = p;
         }
@@ -129,8 +128,42 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
     }
 
     @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+
+        s.append("{");
+        for (int i = 0; i < this.size(); i++) {
+            if (this.get(i) != null) {
+                s.append(this.get(i)).append(", ");
+            }
+        }
+        s.append ("}");
+        s.append(" size = ").append(this.size());
+
+
+        return s.toString();
+    }
+
     public Iterator<Element<T>> iterator() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iterator'");
+            return new LinkedListFrequencyTableIterator();
+    }
+    public class LinkedListFrequencyTableIterator implements Iterator<Element<T>> {
+        private Node current = begin.next;
+        private int i = 0;
+
+
+        public boolean hasNext() {
+            return i < size;
+        }
+
+        public Element<T> next() {
+            T w = current.data.getElement();
+            int f = current.data.getFrequency();
+            current = current.next;
+            i++;
+
+            return new Element<>(w, f);
+
+        }
     }
 }

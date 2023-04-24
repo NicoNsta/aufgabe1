@@ -15,16 +15,4 @@ public class RedCard extends Card{
         super(wert, farbe);
         color = red;
     }
-
-    // public Suit getFarben() {
-    //     return this.farbe;
-    // }
-
-    // public Rank getWerte() {
-    //     return this.wert;
-    // }
-
-    // public String getColor(){
-    //     return "dawadwawdawdwad";
-    // }
 }

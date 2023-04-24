@@ -46,7 +46,7 @@ public abstract class Card {
 
     @Override
     public String toString() {
-        return color + " {" +
+        return "\n" + color + " {" +
                 "wert='" + wert +
                 "', farbe='" + farbe +
                 "'}";
