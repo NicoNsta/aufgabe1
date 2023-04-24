@@ -19,7 +19,7 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 
 	@Override
 	public void addAll(FrequencyTable <? extends T> fq) {
-		for (var x : this) {
+		for (var x : fq) {
 			this.add(x.getElement(), x.getFrequency());
 		}
 	}
@@ -49,8 +49,6 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 		for (var x : this) {
 			if (x != null && x.getFrequency() == 1) {
 				fq.add(x.getElement());
-			} else {
-				break;
 			}
 		}
 	}

@@ -158,9 +158,12 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
         public Element<T> next() {
             T w = current.data.getElement();
+            int f = current.data.getFrequency();
             current = current.next;
             i++;
-            return (Element<T>)w;
+
+            return new Element<>(w, f);
+
         }
     }
 }

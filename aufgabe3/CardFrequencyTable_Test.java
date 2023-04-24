@@ -38,15 +38,12 @@ public class CardFrequencyTable_Test {
 		System.out.println(redCardTab);
 		System.out.println(blackCardTab);
 
-		// redCardTab.addAll(cardTab1); // nicht OK
+		//redCardTab.addAll(cardTab1); // nicht OK
 		cardTab1.addAll(redCardTab);
-		cardTab2.addAll(blackCardTab);
-
 		redCardTab.addAll(redCardTab);
-		blackCardTab.addAll(blackCardTab);
 		System.out.println(redCardTab);
 		cardTab1.collectMostFrequent(cardTab2);
-		// cardTab1.collectMostFrequent(redCardTab); // nicht OK
+		//cardTab1.collectMostFrequent(redCardTab); // nicht OK
 		redCardTab.collectMostFrequent(cardTab1);
 	}
 }
